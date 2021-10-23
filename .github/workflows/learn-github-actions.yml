@@ -1,30 +1,24 @@
 name: learn-github-actions
 on: [push]
 jobs:
-  check-bats-version:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-        node_version:
-          - 16
-        architecture:
-          - x64
-    name: Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '${{ matrix.node_version }}'
-      - name: Test SSH
-        env:
-          HOST: ${{ secrets.HOST }}
-          SSHKEY: ${{ secrets.SSH }}
-          PORT: ${{ secrets.PORT }}
-          USER: ${{ secrets.USER }}
-        run: |
-          npm install
-          npm run p
-        
-
+  build-and-deploy:
+    runs-on: ubuntu-latest # 使用 ubuntu 系统镜像运行自动化脚本
+    steps: # 自动化步骤
+    - name: Checkout  # 步骤名称
+      uses: actions/checkout@master # 使用别人包装好的步骤镜像
+    - name: Deploy file to Server
+      uses: wlixcc/SFTP-Deploy-Action@v1.0
+      with:  
+        username: ${{ secrets.USER }} # 引用配置，用户名称
+        server: ${{ secrets.HOST }} # 引用配置，服务器 IP
+        ssh_private_key: ${{ secrets.SSHKEY }} # 引用配置，SSH 私钥
+        local_path: './*' 
+        remote_path: ${{ secrets.REMOTE_PATH }}
+    - name: Server Start    
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSHKEY }}
+        port: ${{ secrets.PORT }}
+        script: ls # 执行脚本命令
