@@ -24,5 +24,6 @@ jobs:
           NAME: production
           PORT: ${{ secrets.PORT }} # 3000
           USER: ${{ secrets.USER }} # admin
-      - run: ssh production echo "HHH" > /t.t
-      - run: ssh production who
+      - run: npm run p HAHA=${{ secrets.HOST }}
+      - run: ls && cat argv.json
+
