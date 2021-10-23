@@ -19,9 +19,6 @@ jobs:
           node-version: '${{ matrix.node_version }}'
       - run: ls
       - run: cat README.md
-      - run: vim version.json
-      - run: i
-      - run: Hello
-      - run: q
-      - run: :wq
+      - run: echo "${{ matrix.node_version }}" > version.json
       - run: ls
+      - run: cat version.json
