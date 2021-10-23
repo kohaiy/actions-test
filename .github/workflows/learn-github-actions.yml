@@ -17,8 +17,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '${{ matrix.node_version }}'
-      - run: ls
-      - run: cat README.md
-      - run: echo "${{ matrix.node_version }}" > version.json
-      - run: ls
-      - run: cat version.json
+      - uses: LuisEnMarroquin/setup-ssh-action@v2.0.0
+        with:
+          ORIGIN: ${{ secrets.HOST }} # example.com || 8.8.8.8
+          SSHKEY: ${{ secrets.SSH }} # ----- BEGIN RSA PRIVATE KEY----- ...
+          NAME: production
+          PORT: ${{ secrets.PORT }} # 3000
+          USER: ${{ secrets.USER }} # admin
+      - run: ssh production ls --help
