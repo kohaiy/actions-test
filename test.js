@@ -20,5 +20,6 @@ ssh.connect({
   ssh.execCommand('ls -a', { cwd:'/root/' }).then(function(result) {
     console.log('STDOUT: ' + result.stdout)
     console.log('STDERR: ' + result.stderr)
+    ssh.dispose();
   });
 });
