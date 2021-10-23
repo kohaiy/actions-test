@@ -23,7 +23,8 @@ jobs:
           SSHKEY: ${{ secrets.SSH }}
           PORT: ${{ secrets.PORT }}
           USER: ${{ secrets.USER }}
-        - run: npm install
-        - run: npm run p
+        run: |
+          npm install
+          npm run p
         
 
