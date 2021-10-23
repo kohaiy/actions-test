@@ -3,6 +3,10 @@ on: [push]
 jobs:
   check-bats-version:
     runs-on: ${{ matrix.os }}
+    env:
+      DAY: Mon
+      HHH: 你好
+      HOUST: ${{ secrets.HOST }}
     strategy:
       matrix:
         os:
@@ -17,13 +21,13 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '${{ matrix.node_version }}'
-      - uses: LuisEnMarroquin/setup-ssh-action@v2.0.0
-        with:
-          ORIGIN: ${{ secrets.HOST }} # example.com || 8.8.8.8
-          SSHKEY: ${{ secrets.SSH }} # ----- BEGIN RSA PRIVATE KEY----- ...
-          NAME: production
-          PORT: ${{ secrets.PORT }} # 3000
-          USER: ${{ secrets.USER }} # admin
-      - run: npm run p HAHA=${{ secrets.HOST }}
+      # - uses: LuisEnMarroquin/setup-ssh-action@v2.0.0
+      #   with:
+      #     ORIGIN: ${{ secrets.HOST }} # example.com || 8.8.8.8
+      #     SSHKEY: ${{ secrets.SSH }} # ----- BEGIN RSA PRIVATE KEY----- ...
+      #     NAME: production
+      #     PORT: ${{ secrets.PORT }} # 3000
+      #     USER: ${{ secrets.USER }} # admin
+      - run: npm run p
       - run: ls && cat argv.json
 
