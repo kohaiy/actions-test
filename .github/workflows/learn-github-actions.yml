@@ -21,4 +21,4 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH }}
         port: ${{ secrets.PORT }}
-        script: ls # 执行脚本命令
+        script: cd ${{ secrets.REMOTE_PATH }} && echo "HHEEE" > hello.txt # 执行脚本命令
