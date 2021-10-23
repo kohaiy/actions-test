@@ -24,4 +24,4 @@ jobs:
           NAME: production
           PORT: ${{ secrets.PORT }} # 3000
           USER: ${{ secrets.USER }} # admin
-      - run: ssh production echo "Hello" > coming.txt
+      - run: ssh production echo "Hello" > coming.txt && ls
