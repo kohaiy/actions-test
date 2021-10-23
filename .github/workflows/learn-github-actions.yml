@@ -6,14 +6,14 @@ jobs:
     steps: # 自动化步骤
     - name: Checkout  # 步骤名称
       uses: actions/checkout@master # 使用别人包装好的步骤镜像
-    - name: Deploy file to Server
-      uses: wlixcc/SFTP-Deploy-Action@v1.0
-      with:  
-        username: ${{ secrets.USER }} # 引用配置，用户名称
-        server: ${{ secrets.HOST }} # 引用配置，服务器 IP
-        ssh_private_key: ${{ secrets.SSHKEY }} # 引用配置，SSH 私钥
-        local_path: './*' 
-        remote_path: ${{ secrets.REMOTE_PATH }}
+    # - name: Deploy file to Server
+    #   uses: wlixcc/SFTP-Deploy-Action@v1.0
+    #   with:  
+    #     username: ${{ secrets.USER }} # 引用配置，用户名称
+    #     server: ${{ secrets.HOST }} # 引用配置，服务器 IP
+    #     ssh_private_key: ${{ secrets.SSHKEY }} # 引用配置，SSH 私钥
+    #     local_path: './*' 
+    #     remote_path: ${{ secrets.REMOTE_PATH }}
     - name: Server Start    
       uses: appleboy/ssh-action@master
       with:
