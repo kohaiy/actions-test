@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/kohaiy/actions-test/issues"
   },
-  "homepage": "https://github.com/kohaiy/actions-test#readme"
+  "homepage": "https://github.com/kohaiy/actions-test#readme",
+  "dependencies": {
+    "node-ssh": "^12.0.0"
+  }
 }
