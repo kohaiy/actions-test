@@ -24,6 +24,5 @@ jobs:
           NAME: production
           PORT: ${{ secrets.PORT }} # 3000
           USER: ${{ secrets.USER }} # admin
-      - run: ssh production
-      - run: ls
-      - run: psw
+      - run: ssh production pwd
+      - run: ssh production whoiam
