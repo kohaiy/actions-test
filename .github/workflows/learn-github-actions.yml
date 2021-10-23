@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: ls -a
+      - run: ls
+      - run: cat README.md
       - run: npm install -g bats
       - run: bats -v
