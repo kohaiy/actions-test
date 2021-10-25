@@ -25,8 +25,8 @@ jobs:
           PORT: ${{ secrets.PORT }} # 3000
           USER: ${{ secrets.USER }} # admin
       - run: ssh production ls -a
-      - run: ssh production echo "hellow" > hello.txt
+      - run: ssh production "echo 'hellow' > hello.txt"
       - run: ssh production ls -a
-      # - run: ssh production cat hello.txt
+      - run: ssh production cat hello.txt
       - run: ssh production whoami
       - run: ssh production pwd
