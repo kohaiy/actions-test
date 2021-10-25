@@ -27,6 +27,6 @@ jobs:
       - run: ssh production ls -a
       - run: ssh production echo "hellow" > hello.txt
       - run: ssh production ls -a
-      - run: ssh production cat hello.txt
+      # - run: ssh production cat hello.txt
       - run: ssh production whoami
       - run: ssh production pwd
