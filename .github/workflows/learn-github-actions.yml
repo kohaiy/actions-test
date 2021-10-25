@@ -24,9 +24,4 @@ jobs:
           NAME: production
           PORT: ${{ secrets.PORT }} # 3000
           USER: ${{ secrets.USER }} # admin
-      - run: ssh production cd ${{ secrets.REMOTE_PATH }}
-      - run: ssh production "echo '${{ secrets.SSH }}' > hello.txt"
-      - run: ssh production ls -a
-      - run: ssh production cat hello.txt
-      - run: ssh production whoami
-      - run: ssh production "pwd"
+      - run: ssh production "cd ${{ secrets.REMOTE_PATH }} && echo '${{ secrets.SSH }}' > hello.txt && ls"
