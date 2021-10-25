@@ -29,4 +29,4 @@ jobs:
       - run: ssh production ls -a
       - run: ssh production cat hello.txt
       - run: ssh production whoami
-      - run: ssh production pwd
+      - run: ssh production "pwd && npm -v"
