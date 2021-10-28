@@ -23,11 +23,11 @@ jobs:
       run: |
         VERSION=${{ github.ref }}
 
-        if [ "${{ github.ref }}" == "refs/tags/v*" ]; then
+        if [[ "${{ github.ref }}"=="refs/tags/v*" ]]; then
           VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
         fi
 
-        if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+        if [ "${{ github.ref }}"=="refs/heads/main" ]; then
           VERSION=latest
         fi
 
