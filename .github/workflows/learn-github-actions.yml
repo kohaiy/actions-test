@@ -21,8 +21,14 @@ jobs:
     #     remote_path: ${{ secrets.REMOTE_PATH }}
     - name: Server Start
       run: |
-        echo ${{ github.sha }}
+        VERSION = ${{ github.ref }}
+
+        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
+
+        [ "${{ github.ref }}" == "main" ] && VERSION=latest
+
         echo ${{ github.ref }}
+        echo $VERSION
       # uses: appleboy/ssh-action@master
       # with:
       #   host: ${{ secrets.HOST }}
