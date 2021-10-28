@@ -23,7 +23,7 @@ jobs:
       run: |
         VERSION = ${{ github.ref }}
 
-        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
+        [[ "${{ github.ref }}" == "refs/tags/*" ]] && VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
 
         [ "${{ github.ref }}" == "main" ] && VERSION=latest
 
