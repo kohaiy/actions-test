@@ -23,7 +23,7 @@ jobs:
       run: |
         VERSION=${{ github.ref }}
 
-        if [[ "${{ github.ref }}" == "refs/tags/v*" ]]; then
+        if [[ "${{ github.ref }}"=="refs/tags/v*" ]]; then
           VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
         fi
 
