@@ -23,12 +23,12 @@ jobs:
       run: |
         VERSION=${{ github.ref }}
 
-        [[ "${{ github.ref }}" == "refs/tags/*" ]] && VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
+        ["${{ github.ref }}"=="refs/tags/*"] && VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
 
-        [ "${{ github.ref }}" == "main" ] && VERSION=latest
+        ["${{ github.ref }}"=="refs/heads/main"] && VERSION=latest
 
-        echo ${{ github.ref }}
-        echo $VERSION
+        echo github.ref=${{ github.ref }}
+        echo version=$VERSION
       # uses: appleboy/ssh-action@master
       # with:
       #   host: ${{ secrets.HOST }}
