@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - dev
     tags:
       - v*
 jobs:
@@ -25,10 +26,13 @@ jobs:
 
         if [[ "${{ github.ref }}"=="refs/tags/v*" ]]; then
           VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
-        fi
 
-        if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+        elif [[ "${{ github.ref }}"=="*/main" ]]; then
           VERSION=latest
+
+        elif [[ "${{ github.ref }}"=="*/dev" ]]; then
+          VERSION=dev
+
         fi
 
         echo github.ref=${{ github.ref }}
