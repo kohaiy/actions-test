@@ -26,13 +26,10 @@ jobs:
 
         if [[ $VERSION == refs/tags/v* ]]; then
           VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
-          echo tag-$VERSION
         elif [[ $VERSION == */main ]]; then
           VERSION=latest
-          echo latest-$VERSION
         elif [[ $VERSION == */dev ]]; then
           VERSION=dev
-          echo dev-$VERSION
         fi
 
         echo github.ref=${{ github.ref }}
