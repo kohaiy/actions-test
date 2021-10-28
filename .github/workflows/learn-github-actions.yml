@@ -21,7 +21,7 @@ jobs:
     #     remote_path: ${{ secrets.REMOTE_PATH }}
     - name: Server Start
       run: |
-        VERSION = ${{ github.ref }}
+        VERSION=${{ github.ref }}
 
         [[ "${{ github.ref }}" == "refs/tags/*" ]] && VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
 
