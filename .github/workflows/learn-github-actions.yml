@@ -24,15 +24,15 @@ jobs:
       run: |
         VERSION=${{ github.ref }}
 
-        if [[ "${{ github.ref }}"=="refs/tags/v*" ]]; then
+        if [[ $VERSION == refs/tags/v* ]]; then
           VERSION=$(echo $VERSION | sed -e 's/^refs\/tags\/v//g')
-
-        elif [[ "${{ github.ref }}"=="*/main" ]]; then
+          echo tag-$VERSION
+        elif [[ $VERSION == */main ]]; then
           VERSION=latest
-
-        elif [[ "${{ github.ref }}"=="*/dev" ]]; then
+          echo latest-$VERSION
+        elif [[ $VERSION == */dev ]]; then
           VERSION=dev
-
+          echo dev-$VERSION
         fi
 
         echo github.ref=${{ github.ref }}
