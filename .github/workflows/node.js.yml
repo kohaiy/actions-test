@@ -23,9 +23,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
     - run: echo "hello" > test.txt
     - run: git status
     - run: git add . && git commit -m "update"
