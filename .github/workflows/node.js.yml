@@ -26,5 +26,7 @@ jobs:
         cache: 'npm'
     - run: echo "hello" > test.txt
     - run: git status
+    - run: git config --global user.email "i@kohai.top"
+    - run: git config --global user.name "kohai"
     - run: git add . && git commit -m "update"
     - run: git push && git status
