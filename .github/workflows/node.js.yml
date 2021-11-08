@@ -24,7 +24,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: echo "hello" > test.txt
+    - run: echo `date +"%Y-%m-%d %H:%M:%S"` >> update.log
     - run: git status
     - run: git fetch
     - run: git pull
